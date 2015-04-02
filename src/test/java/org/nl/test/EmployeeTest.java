@@ -21,7 +21,7 @@ public class EmployeeTest {
 
 	private EmployeeService employeeService;
 	
-	@Before
+	//@Before
 	public void Before(){
 		
 		ApplicationContext ctx =
@@ -30,7 +30,7 @@ public class EmployeeTest {
 		employeeService = (EmployeeService)ctx.getBean("employeeServiceImpl");
 	}
 	
-	@Test
+	//@Test
 	public void save(){
 		Employee emp = new Employee();
 		emp.setEmpName("Rabbits");
