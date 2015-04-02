@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.nl.model.DepartmentNum;
 import org.nl.model.page.DepartmentNumPage;
+import org.springframework.stereotype.Repository;
 
 /**
  * 部门编号DAO层
  * @author Rabbits
  * @version 1.0 	2015.04.02	11:40
  */
+
 public interface DepartmentNumDao {
 	
 	/**
@@ -62,4 +64,11 @@ public interface DepartmentNumDao {
 	 * @return
 	 */
 	List<DepartmentNum> findByPage(DepartmentNumPage page);
+	
+	/**
+	 * 根据部门编号查询部门名称
+	 * @param departmentNum
+	 * @return
+	 */
+	String findByDepartmenNumToDName(int departmentNum);
 }

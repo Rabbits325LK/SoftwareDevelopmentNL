@@ -1,5 +1,7 @@
 package org.nl.service;
 
+import java.util.Map;
+
 import org.nl.model.Employee;
 
 /**
@@ -10,7 +12,15 @@ import org.nl.model.Employee;
  */
 public interface EmployeeService {
 	
-	void save(Employee emp ,String birthDate);
+	void save(Employee emp ,String birthDate);  //Test。。。ok
 	
-	int findByNameToLevel(String empName);
+	int findByNameToLevel(String empName);  //Test。。。ok
+	
+	/**
+	 * 业务逻辑 
+	 * 根据姓名查询部门 职位
+	 * @param empName
+	 * @return
+	 */
+	Map<String,String> findByINLD(String empName);  //Test。。。ok
 }

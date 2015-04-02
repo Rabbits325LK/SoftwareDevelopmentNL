@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.nl.model.EmpLevel;
 import org.nl.model.page.EmpLevelPage;
+import org.springframework.stereotype.Repository;
 
 /**
  * 员工级别DAO层
@@ -11,6 +12,7 @@ import org.nl.model.page.EmpLevelPage;
  * @version 1.0 	2015.04.02	11:22
  *
  */
+
 public interface EmpLevelDao {
 	
 	/**
@@ -63,4 +65,11 @@ public interface EmpLevelDao {
 	 * @return
 	 */
 	List<EmpLevel> findByPage(EmpLevelPage page);
+	
+	/**
+	 * 根据级别编号查询职称
+	 * @param empLevel
+	 * @return
+	 */
+	String findByEmpLevelToEmpLevelName(int empLevel);
 }

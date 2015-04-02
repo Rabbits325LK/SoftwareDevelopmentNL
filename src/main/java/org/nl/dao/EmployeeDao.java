@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.nl.model.Employee;
 import org.nl.model.page.EmployeePage;
+import org.springframework.stereotype.Repository;
 
 /**
  * EmployeeDao 层
  * @author Rabbits
  * @version 1.0 2015.04.01 10：33
+ * 				2015.04.02 16:17 add(findByDepartmentNum())
+ * 								 add(updateByNameToDepartmentNum())
  */
+
 public interface EmployeeDao {
 	
 	/**
@@ -80,4 +84,19 @@ public interface EmployeeDao {
 	 * @return
 	 */
 	int findRows();
+	
+	/**
+	 * 根据名字查询部门编号
+	 * @param empName
+	 * @return
+	 */
+	int findByDepartmentNum(String empName);
+	
+	/**
+	 * 根据名字修改部门编号
+	 * @param emp
+	 */
+	void updateByNameToDepartmentNum(Employee emp);
+	
+	
 }

@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.nl.dao.EmployeeDao">
          <!-- Save -->
-         <insert id="save" parameterType="Employee" keyProperty="empId">
+         <insert id="save" parameterType="org.nl.model.Employee" keyProperty="empId">
              insert into sdnl_employee( 
          empName,
          empPwd,
@@ -44,20 +44,20 @@
          	update sdnl_employee set empName=#{empName} where empId=#{empId}
          </update>
          
-         <update id="updateByNameToPwd" parameterType="Employee">
+         <update id="updateByNameToPwd" parameterType="org.nl.model.Employee">
          	update sdnl_employee set empPwd=#{empPwd} where empName=#{empName}
          </update>
          
-         <update id="updateByName" parameterType="Employee">
+         <update id="updateByName" parameterType="org.nl.model.Employee">
          	update sdnl_emplyee set address=#{address},departmenNumt=#{departmentNum},phone=#{phone},sex=#{sex},age#{age},birth=#{birth},empQQ=#{empQQ},empEmail=#{empEmail} where= empName=#{empName}
          </update>
          
-         <update id="updateByNameToLevel" parameterType="Employee">
+         <update id="updateByNameToLevel" parameterType="org.nl.model.Employee">
          	update sdnl_emplyee set empLevel=#{empLevel} where empName=#{empName}
          </update>
          
          <!-- Find -->
-         <select id="findById" parameterType="int" resultType="Employee">
+         <select id="findById" parameterType="int" resultType="org.nl.model.Employee">
          	select * from sdnl_employee where empId=#{id}
          </select>
          
@@ -65,12 +65,12 @@
          	select empLevel from sdnl_employee where empName=#{empName}
          </select>
          
-         <select id="findByAll" resultType="Employee">
+         <select id="findByAll" resultType="org.nl.model.Employee">
          	select * from sdnl_employee order by empId
          </select>
          
          <select id="findByPage" parameterType="org.nl.model.page.EmployeePage"
-         resultType="Employee">
+         resultType="org.nl.model.Employee">
          	<![CDATA[
          		select * from sdnl_employee order by empId limit #{begin},5
          	]]>
@@ -79,4 +79,12 @@
          <select id="findRows" resultType="int">
          	select count(*) from sdnl_employee
          </select>
+         
+         <select id="findByDepartmentNum" parameterType="String" resultType="int">
+         	select departmentNum from sdnl_employee where empName=#{empName}
+         </select>
+         
+         <update id="updateByNameToDepartmentNum" parameterType="org.nl.model.Employee">
+         	update sdnl_employee set departmentNum=#{departmentNum} where empName=#{empName}
+         </update>
 </mapper>

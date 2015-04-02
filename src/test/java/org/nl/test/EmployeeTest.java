@@ -1,6 +1,7 @@
 package org.nl.test;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  */
 public class EmployeeTest {
-
+	
 	private EmployeeService employeeService;
 	
 	//@Before
@@ -33,7 +34,7 @@ public class EmployeeTest {
 	//@Test
 	public void save(){
 		Employee emp = new Employee();
-		emp.setEmpName("Rabbits");
+		emp.setEmpName("Rabbits325");
 		emp.setEmpPwd("lkailyt325");
 		emp.setAddress("湖南省长沙市");
 		emp.setPhone("18676660220");
@@ -62,5 +63,13 @@ public class EmployeeTest {
 		String empName = "Rabbits";
 		int level = employeeService.findByNameToLevel(empName);
 		System.out.println(level);
+	}
+	
+	//@Test
+	public void findByINLD(){
+		Map<String,String> inld = employeeService.findByINLD("Rabbits");
+		System.out.println(inld.get("empName"));
+		System.out.println(inld.get("eName"));
+		System.out.println(inld.get("dName"));
 	}
 }
