@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nl.dao.EmployeeDao">
+         <!-- Save -->
+         <insert id="save" parameterType="Employee" keyProperty="empId">
+             insert into sdnl_employee( 
+         empName,
+         empPwd,
+         address,
+         departmentNum,
+         phone,
+         sex,
+         age,
+         empLevel,
+         birth,
+         empQQ,
+         empEmail,
+         empSaraly)
+         values
+         (       
+         #{empName},
+         #{empPwd},
+         #{address},
+         #{departmentNum},
+         #{phone},
+         #{sex},
+         #{age},
+         #{empLevel},
+         #{birth},
+         #{empQQ},
+         #{empEmail},
+         #{empSaraly})
+         </insert>
+         
+         <!-- Delete -->
+         <delete id="deleteById" parameterType="int">
+         	delete from sdnl_employee where empId=#{empId}
+         </delete>
+         
+         <!-- Update -->
+         <update id="updateByIdToName" parameterType="int">
+         	update sdnl_employee set empName=#{empName} where empId=#{empId}
+         </update>
+         
+         <update id="updateByNameToPwd" parameterType="Employee">
+         	update sdnl_employee set empPwd=#{empPwd} where empName=#{empName}
+         </update>
+         
+         <update id="updateByName" parameterType="Employee">
+         	update sdnl_emplyee set address=#{address},departmenNumt=#{departmentNum},phone=#{phone},sex=#{sex},age#{age},birth=#{birth},empQQ=#{empQQ},empEmail=#{empEmail} where= empName=#{empName}
+         </update>
+         
+         <update id="updateByNameToLevel" parameterType="Employee">
+         	update sdnl_emplyee set empLevel=#{empLevel} where empName=#{empName}
+         </update>
+         
+         <!-- Find -->
+         <select id="findById" parameterType="int" resultType="Employee">
+         	select * from sdnl_employee where empId=#{id}
+         </select>
+         
+         <select id="findByNameToLevel" parameterType="String" resultType="int">
+         	select empLevel from sdnl_employee where empName=#{empName}
+         </select>
+         
+         <select id="findByAll" resultType="Employee">
+         	select * from sdnl_employee order by empId
+         </select>
+         
+         <select id="findByPage" parameterType="org.nl.model.page.EmployeePage"
+         resultType="Employee">
+         	<![CDATA[
+         		select * from sdnl_employee order by empId limit #{begin},5
+         	]]>
+         </select>
+         
+         <select id="findRows" resultType="int">
+         	select count(*) from sdnl_employee
+         </select>
+</mapper>
