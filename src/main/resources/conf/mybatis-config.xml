@@ -8,6 +8,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          <typeAlias alias="Employee" type="org.nl.model.Employee" />
          <typeAlias alias="EmpLevel" type="org.nl.model.EmpLevel"/>
          <typeAlias alias="DepartmentNum" type="org.nl.model.DepartmentNum"/>
+         <typeAlias alias="Attendance" type="org.nl.model.Attendance"/>
+         <typeAlias alias="Message" type="org.nl.model.Message"/>
+         <typeAlias alias="Reply" type="org.nl.model.Reply"/>
+         <typeAlias alias="Criticism" type="org.nl.model.Criticism"/>
     </typeAliases>
  
     <!-- 映射map -->

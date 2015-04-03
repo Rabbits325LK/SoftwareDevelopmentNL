@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nl.dao.MessageDao">
+	<!-- add -->
+	<insert id="add" parameterType="org.nl.model.Message">
+		insert into sdnl_message(messageTitle,messageContext,messagePublisher,empLevel) values
+		(#{messageTitle},#{messageContext},#{messagePublisher},#{empLevel})
+	</insert>
+	
+	<!-- deleteById -->
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from sdnl_message where messageId=#{messageId}
+	</delete>
+	
+	<!-- findByPage -->
+	<select id="findByPage" parameterType="org.nl.model.page.MessagePage" resultType="org.nl.model.Message">
+		select * from sdnl_message order by messageId limit #{begin},5
+	</select>
+	
+	<!-- findByName -->
+	<select id="findByName" resultType="org.nl.model.Message">
+		select * from sdnl_message where messagePublisher=#{0} order by messageId limit #{1},5
+	</select>
+	
+	<!-- findByTitle -->
+	<select id="findByTitle" parameterType="org.nl.model.Message" resultType="org.nl.model.Message">
+		select * from sdnl_message where messageTitle=#{messageTitle}
+	</select>
+	
+	<!-- findRows -->
+	<select id="findRows" resultType="java.lang.Integer">
+		select count(*) from sdnl_message
+	</select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nl.dao.CriticismDao">
+	<!-- add -->
+	<insert id="add" parameterType="org.nl.dao.CriticismDao">
+		insert into sdnl_criticism(criticismContext,criticismAdmin,messageId) values
+		(#{criticismContext},#{criticismAdmin},#{messageId})
+	</insert>
+	
+	<!-- deleteById -->
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from sdnl_criticism where criticismId=#{criticismId}
+	</delete>
+	
+	<!-- findByMessageIdPage -->
+	<select id="findByMessageIdPage" resultType="org.nl.model.Criticism">
+		select * from sdnl_criticism where messageId=#{0} order by criticismId limit #{1},5
+	</select>
+	
+	<!-- findByPage -->
+	<select id="findByPage" parameterType="org.nl.model.page.CriticismPage" resultType="org.nl.model.Criticism">
+		select * from sdnl_criticism order by criticismId limit #{begin},5
+	</select>
+	
+	<!-- findRows -->
+	<select id="findRows" resultType="java.lang.Integer">
+		select count(*) from sdnl_criticism
+	</select>
+	
+	<!-- findByMessageIdRows -->
+	<select id="findByMessageIdRows" parameterType="java.lang.Ingeter" resultType="java.lang.Integer">
+		select count(*) from sdnl_criticism where messageId=#{messageId}
+	</select>
+</mapper>

@@ -34,12 +34,13 @@ empId int,
 empName varchar(30),
 departmentNum int,
 empLevel int,
-startTime timestamp,
-stopTime timestamp,
+startTime date,
+stopTime date,
 overTime int,
 lateTime int,
 leaveOneDay int,
-leaveOneHalfDay int);
+leaveOneHalfDay int,
+createTime timestamp default current_timestamp);
 
 --create table sdnl_message
 create table sdnl_message (

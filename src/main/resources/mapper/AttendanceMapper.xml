@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nl.dao.AttendanceDao">
+	<!-- addStart -->
+	<insert id="addStart" parameterType="org.nl.model.Attendance">
+		insert into sdnl_attendance(empId,empName,departmentNum,empLevel,startTime) values
+		(#{empId},#{empName},#{departmentNum},#{empLevel},now())
+	</insert>
+	
+	<!-- addStopForName -->
+	<update id="addStopForName" parameterType="java.lang.Integer">
+		update sdnl_attendance set stopTime=now() where attendanceId=#{attendanceId}
+	</update>
+	
+	<!-- findByEmpName -->
+	<select id="findByEmpName" parameterType="string" resultType="java.lang.Integer">
+		select max(attendanceId) from sdnl_attendance where empName=#{empName}
+	</select>
+	
+	<!-- addLeaveDay -->
+	<insert id="addLeaveDay" parameterType="org.nl.model.Attendance">
+		insert into sdnl_attendance(empId,empName,departmentNum,empLevel,leaveOneDay) values
+		(#{empId},#{empName},#{departmentNum},#{empLevel},#{leaveOneDay})
+	</insert>
+	
+	<!-- addLeaveOneHalfDay -->
+	<insert id="addLeaveHalfDay" parameterType="org.nl.model.Attendance">
+		insert into sdnl_attendance(empId,empName,departmentNum,empLevel,leaveOneHalfDay) values
+		(#{empId},#{empName},#{departmentNum},#{empLevel},#{leaveOneHalfDay})
+	</insert>
+	
+	<!-- updateByIdToOverTime -->
+	<update id="updateByIdToOverTime" parameterType="org.nl.model.Attendance">
+		update sdnl_attendance set overTime=#{overTime} where attendanceId=#{attendanceId}
+	</update>
+	
+	<!-- findByPage -->
+	<select id="findByPage" parameterType="org.nl.model.page.AttendancePage" resultType="org.nl.model.Attendance">
+		select * from sdnl_attendance order by attendanceId limit #{begin},5
+	</select>
+	
+	<!-- findByNamePage -->
+	<select id="findByNamePage" resultType="org.nl.model.Attendance">
+		select * from sdnl_attendance where empName=#{0} order by attendanceId limit #{1},5
+	</select>
+	
+	<!-- findByDepartmentNumPage -->
+	<select id="findByDepartmentNumPage" resultType="org.nl.model.Attendance">
+		select * from sdnl_attendance where departmentNum=#{0} order by attendanceId limit #{1},5
+	</select>
+	
+	<!-- deleteById -->
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from sdnl_attendance where attendanceId=#{attendanceId}
+	</delete>
+	
+	<!-- deleteByEmpId -->
+	<delete id="deleteByEmpId" parameterType="java.lang.Integer">
+		delete from sdnl_attendance where empId=#{empId}
+	</delete>
+	
+	<!-- deleteBydepartmentNum -->
+	<delete id="deleteBydepartmentNum" parameterType="java.lang.Integer">
+		delete from sdnl_attendance where departmentNum=#{departmentNum}
+	</delete>
+	
+	<!-- findRows -->
+	<select id="findRows" resultType="java.lang.Integer">
+		select count(*) from sdnl_attendance
+	</select>
+</mapper>

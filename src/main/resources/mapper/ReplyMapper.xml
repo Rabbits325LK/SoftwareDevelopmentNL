@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ln.dao.ReplyDao">
+	<!-- add -->
+	<insert id="add" parameterType="org.nl.model.Reply">
+		insert into sdnl_reply(replyContext,replyAdmin,messageId) values
+		(#{replyContext},#{replyAdmin},#{messageId})
+	</insert>
+	
+	<!-- deleteById -->
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from sdnl_reply where replyId=#{replyId}
+	</delete>
+	
+	<!-- findByMessageIdPage -->
+	<select id="findByMessageIdPage" resultType="org.nl.model.Reply">
+		select * from sdnl_reply where messageId=#{0} order by replyId limit #{1},5 
+	</select>
+	
+	<!-- findRows -->
+	<select id="findRows" resultType="java.lang.Integer">
+		select count(*) from sdnl_reply
+	</select>
+	
+	<!-- findRows -->
+	<select id="findByMessageIdRows" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from sdnl_reply where messageId=#{messageId}
+	</select>
+</mapper>
