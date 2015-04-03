@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nl.dao.EmpLevelDao">
+	<!-- add -->
+	<insert id="add" parameterType="org.nl.model.EmpLevel">
+		insert into sdnl_empLevel(empLevel,empLevelName) values(#{empLevel},#{empLevelName})
+	</insert>
+	
+	<!-- update -->
+	<update id="updateById" parameterType="org.nl.model.EmpLevel">
+		update sdnl_empLevel set empLevel=#{empLevel},empLevelName=#{empLevelName} where empLevelId=#{empLevelId}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteById">
+		delete from sdnl_empLevel where empLevelId=#{empLevelId}
+	</delete>
+	
+	<!-- find -->
+	<select id="findById" parameterType="int" resultType="org.nl.model.EmpLevel">
+		select * from sdnl_empLevel where empLevelId=#{empLevelId}
+	</select>
+	
+	<select id="findByEmpLevel" parameterType="int" resultType="org.nl.model.EmpLevel">
+		select * from sdnl_empLevel where empLevel=#{empLevel}
+	</select>
+	
+	<select id="findByAll" resultType="org.nl.model.EmpLevel">
+		select * from sdnl_empLevel order by empLevelId
+	</select>
+	
+	<select id="findRows" resultType="int">
+		select count(*) from sdnl_empLevel 
+	</select>
+	
+	<select id="findByPage" parameterType="org.nl.model.page.EmpLevelPage" resultType="org.nl.model.EmpLevel">
+		select * from sdnl_empLevel order by empLevelId limit #{begin},5
+	</select>
+	
+	<select id="findByEmpLevelToEmpLevelName" parameterType="java.lang.Integer" resultType="string">
+		select empLevelName from sdnl_empLevel where empLevel=#{empLevel}
+	</select>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nl.dao.DepartmentNumDao">
+	<!-- add -->
+	<insert id="add" parameterType="org.nl.model.DepartmentNum">
+		insert into sdnl_departmentNum(departmentNum,departmentNumName) values(#{departmentNum},#{departmentNumName})
+	</insert>
+	
+	<!-- update -->
+	<update id="updateById" parameterType="org.nl.model.DepartmentNum">
+		update sdnl_departmentNum set departmentNum=#{departmentNum},departmentNumName=#{departmenNumName}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteById" parameterType="int">
+		delete from sdnl_departmentNum where departmentNumId=#{departmentNumid}
+	</delete>
+	
+	<!-- find -->
+	<select id="findById" parameterType="org.nl.model.DepartmentNum" resultType="org.nl.model.DepartmentNum">
+		select * from sdnl_departmentNum where departmentNumId=#{departmentNumId}
+	</select>
+	
+	<select id="findByDepartmentNum" parameterType="int" resultType="org.nl.model.DepartmentNum">
+		select * from sdnl_departmentNum where departmentNum=#{departmentNum}
+	</select>
+	
+	<select id="findByAll" resultType="org.nl.model.DepartmentNum">
+		select * from sdnl_departmentNum order by departmentNumId
+	</select>
+	
+	<select id="findRows" resultType="int">
+		select count(*) from sdnl_departmentNum
+	</select>
+	
+	<select id="findByPage" parameterType="org.nl.model.page.DepartmentNumPage" resultType="org.nl.model.DepartmentNum">
+		select * from sdnl_departmentNum order by departmentNumId limit #{begin},5
+	</select>
+	
+	<select id="findByDepartmenNumToDName" parameterType="java.lang.Integer" resultType="string">
+		select departmentNumName from sdnl_departmentNum where departmentNum=#{departmentNum}
+	</select>
+</mapper>
