@@ -30,7 +30,7 @@
 	</select>
 	
 	<!-- findByMessageIdRows -->
-	<select id="findByMessageIdRows" parameterType="java.lang.Ingeter" resultType="java.lang.Integer">
+	<select id="findByMessageIdRows" parameterType="java.lang.Integer" resultType="java.lang.Integer">
 		select count(*) from sdnl_criticism where messageId=#{messageId}
 	</select>
 </mapper>

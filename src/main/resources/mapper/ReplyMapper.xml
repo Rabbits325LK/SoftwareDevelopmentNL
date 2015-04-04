@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.ln.dao.ReplyDao">
+<mapper namespace="org.nl.dao.ReplyDao">
 	<!-- add -->
 	<insert id="add" parameterType="org.nl.model.Reply">
 		insert into sdnl_reply(replyContext,replyAdmin,messageId) values
