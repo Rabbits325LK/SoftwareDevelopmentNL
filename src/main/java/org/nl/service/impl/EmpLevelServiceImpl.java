@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
  * EmpLevel 业务接口实现类
  * @author Rabbits
  * @version 1.0		2015.04.02	13:50
+ * 					2015.04.05  21:09 add(findByAll())
  */
 @Service
 public class EmpLevelServiceImpl implements EmpLevelService{
@@ -39,6 +40,12 @@ public class EmpLevelServiceImpl implements EmpLevelService{
 	public String findByEmpLevelToEmpLevelName(int empLevel) {
 		// TODO Auto-generated method stub
 		return empLevelDao.findByEmpLevelToEmpLevelName(empLevel);
+	}
+
+	@Override
+	public List<EmpLevel> findByAll() {
+		// TODO Auto-generated method stub
+		return empLevelDao.findByAll();
 	}
 
 }

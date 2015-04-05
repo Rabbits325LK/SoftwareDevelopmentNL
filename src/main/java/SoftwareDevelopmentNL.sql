@@ -2,6 +2,7 @@
 create table sdnl_employee(
 empId int NOT NULL AUTO_INCREMENT primary key,
 empName varchar(30) not null,
+empCode varchar(30) not null,
 empPwd varchar(30) not null,
 address varchar(120),
 phone varchar(11),

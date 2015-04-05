@@ -40,4 +40,10 @@ public class DepartmentServiceImpl implements DepartmentNumService {
 		// TODO Auto-generated method stub
 		return departmentNumDao.findByDepartmenNumToDName(departmentNum);
 	}
+
+	@Override
+	public List<DepartmentNum> findByAll() {
+		// TODO Auto-generated method stub
+		return departmentNumDao.findByAll();
+	}
 }

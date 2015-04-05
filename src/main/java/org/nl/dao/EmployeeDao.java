@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
  * @version 1.0 2015.04.01 10：33
  * 				2015.04.02 16:17 add(findByDepartmentNum())
  * 								 add(updateByNameToDepartmentNum())
+ * 				2015.04.05 10:13 add(findByName())
  */
 
 public interface EmployeeDao {
@@ -98,5 +99,10 @@ public interface EmployeeDao {
 	 */
 	void updateByNameToDepartmentNum(Employee emp);
 	
-	
+	/**
+	 * 根据帐号查找
+	 * @param empName
+	 * @return
+	 */
+	Employee findByCode(String empCode);
 }

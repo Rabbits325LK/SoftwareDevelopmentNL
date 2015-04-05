@@ -6,6 +6,7 @@
          <!-- Save -->
          <insert id="save" parameterType="org.nl.model.Employee" keyProperty="empId">
              insert into sdnl_employee( 
+         empCode,
          empName,
          empPwd,
          address,
@@ -20,6 +21,7 @@
          empSaraly)
          values
          (       
+         #{empCode},
          #{empName},
          #{empPwd},
          #{address},
@@ -87,4 +89,8 @@
          <update id="updateByNameToDepartmentNum" parameterType="org.nl.model.Employee">
          	update sdnl_employee set departmentNum=#{departmentNum} where empName=#{empName}
          </update>
+         <!-- findByCode -->
+         <select id="findByCode" parameterType="string" resultType="org.nl.model.Employee">
+         	select * from sdnl_employee where empCode=#{empCode}
+         </select>
 </mapper>

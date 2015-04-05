@@ -23,4 +23,6 @@ public interface EmployeeService {
 	 * @return
 	 */
 	Map<String,String> findByINLD(String empName);  //Test。。。ok
+	
+	Employee findByCode(String empCode);
 }

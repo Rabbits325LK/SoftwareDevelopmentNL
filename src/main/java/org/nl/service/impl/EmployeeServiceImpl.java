@@ -98,4 +98,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return inld;  //返回出去
 	}
 
+	@Override
+	public Employee findByCode(String empCode) {
+		// TODO Auto-generated method stub
+		return employeeDao.findByCode(empCode);
+	}
+
 }

@@ -7,11 +7,12 @@ import java.util.Date;
  * 员工类模型
  * @author rabbits325
  * @version 1.0      2015.04.01 10:30
- *
+ * 					 2015.04.05 10：18 add(empCode)
  */
 public class Employee {
 	/**
 	 * empId : 员工ID
+	 * empCode : 员工帐号
 	 * empName : 员工姓名
 	 * empPwd : 员工口令
 	 * address : 住址
@@ -26,7 +27,8 @@ public class Employee {
 	 * empQQ : QQ
 	 * empSaraly : 员工工资
 	 */
-	private Integer empId;                     
+	private Integer empId;    
+	private String empCode;
 	private String empName;
 	private String empPwd;
 	private String address;
@@ -125,16 +127,29 @@ public class Employee {
 	public void setEmpSaraly(double empSaraly) {
 		this.empSaraly = empSaraly;
 	}
+	public Integer getEmpLevel() {
+		return empLevel;
+	}
+	public void setEmpLevel(Integer empLevel) {
+		this.empLevel = empLevel;
+	}
+
+	public String getEmpCode() {
+		return empCode;
+	}
+	public void setEmpCode(String empCode) {
+		this.empCode = empCode;
+	}
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", empName=" + empName
-				+ ", empPwd=" + empPwd + ", address=" + address + ", phone="
-				+ phone + ", age=" + age + ", sex=" + sex + ", createTime="
-				+ createTime + ", birth=" + birth + ", emplevel=" + empLevel
-				+ ", departmentNum=" + departmentNum + ", empQQ=" + empQQ
-				+ ", empEmail=" + empEmail + ", empSaraly=" + empSaraly + "]";
+		return "Employee [empId=" + empId + ", empCode=" + empCode
+				+ ", empName=" + empName + ", empPwd=" + empPwd + ", address="
+				+ address + ", phone=" + phone + ", age=" + age + ", sex="
+				+ sex + ", createTime=" + createTime + ", birth=" + birth
+				+ ", empLevel=" + empLevel + ", departmentNum=" + departmentNum
+				+ ", empQQ=" + empQQ + ", empEmail=" + empEmail
+				+ ", empSaraly=" + empSaraly + "]";
 	}
-	
 	
 	
 }

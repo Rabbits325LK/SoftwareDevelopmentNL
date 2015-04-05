@@ -5,6 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -13,35 +14,129 @@
 
 <title>My JSP 'sign.jsp' starting page</title>
 <meta charset="utf-8">
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
-	This is my Sign page.
-	<br>
-	<form action="login/toSign.do" method="post">
-		empName:<input type="text" name="empName"><br> empPwd:<input
-			type="password" name="empPwd"><br> address:<input
-			type="text" name="address"><br> department:<input
-			type="text" name="department"><br> phone:<input
-			type="tel" name="phone"><br> sex:<input type="radio"
-			name="sex" value="1" /> 男 <input type="radio" name="sex" value="0" />
-		女 <br> age:<input type="text" name="age"><br>
-		emplevel:<input type="radio" name="emplevel" value="0" />老总 <input
-			type="radio" name="emplevel" value="1" /> 经理 <input type="radio"
-			name="emplevel" value="2" /> 职员<br> birth:<input type="text"
-			name="birthDate">("1990-00-25")
-			
-			<br> <input type="submit" value="sgin in">
-		<input type="reset" value="reset">
-	</form>
+	<div class="container">
+		<div class="row text-center"></div>
+		<div class="row text-center" style="margin-bottom:5%">
+			<h1>Sign Page</h1>
+		</div>
+		<div class="row" style="margin-bottom:10%">
+			<div class="col-sm-1"></div>
+
+			<div class="col-sm-10">
+				<form action="login/toSign.do" method="post">
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label"> empName: </label>
+						<div class="col-sm-10">
+							<input type="text" name="empName"
+								class="form-control login-field">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label"> empPwd: </label>
+						<div class="col-sm-10">
+							<input type="password" name="empPwd"
+								class="form-control login-field">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">address:</label>
+						<div class="col-sm-10">
+							<input type="text" name="address"
+								class="form-control login-field">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label"> phone:</label>
+						<div class="col-sm-10">
+							<input type="tel" name="phone" class="form-control login-field">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label"> age:</label>
+						<div class="col-sm-10">
+							<input type="text" name="age" class="form-control login-field">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">empEmail</label>
+						<div class="col-sm-10">
+							<input type="email" name="empEmail"
+								class="form-control login-field">
+						</div>
+					</div>
+					<div class="form-group">
+						<lable class="col-sm-2 control-label">empQQ</lable>
+						<div class="col-sm-10">
+							<input type="empQQ" name="empQQ" class="form-control login-field">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label"> birth:</label>
+						<div class="col-sm-10">
+							<input type="text" name="birthDate"
+								class="form-control login-field">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">EmpLevel</label> <select
+							name="empLevel" class="form-control">
+							<c:forEach items="${empLevels }" var="el">
+								<option value="${el.empLevel }">${el.empLevelName }</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">DepartmentNum</label> <select
+							name="empLevel" class="form-control">
+							<c:forEach items="${departmentNum }" var="dn">
+								<option value="${dn.departmentNum }">${dn.departmentNumName }</option>
+							</c:forEach>
+						</select>
+					</div>
+
+					<div class="radio">
+						<label>Sex</label> <label> <input type="radio" name="sex"
+							id="sex" value="1" aria-label="男"> 男
+						</label> <label> <input type="radio" name="sex" id="sex" value="0"
+							aria-label="女"> 女
+						</label>
+					</div>
+
+
+					<div class="col-xs-2"></div>
+					<div class="col-xs-3">
+						<input type="submit" value="sgin in" class="btn btn-block btn-default">
+					</div>
+					<div class="col-xs-2"></div>
+					<div class="col-xs-3">
+						<input type="button" value="come back" class="btn btn-block btn-default"
+							onclick="comeback()">
+					</div>
+					<div class="col-xs-2"></div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="navbar navbar-default navbar-fixed-bottom text-center">
+		<h4>© Rabbits.cn</h4>
+	</div>
+	<script type="text/javascript">
+		function comeback() {
+			window.location.href = "login/index.do";
+		}
+	</script>
 </body>
 </html>
